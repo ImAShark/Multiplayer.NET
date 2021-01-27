@@ -5,9 +5,11 @@ using UnityEngine;
 public class StringReciever : MonoBehaviour
 {
     public string recievedMsg;
+    public string recievedMsg2;
     public List<string> lastMessage;
 
     public GameObject player1;
+    public GameObject player2;
 
     public Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
     public Dictionary<string, System.Action> functions = new Dictionary<string, System.Action>();
@@ -16,7 +18,9 @@ public class StringReciever : MonoBehaviour
     {
         AddFunction("UpdatePosition", UpdatePosition);
         AddObject("Player1", player1);
+        AddObject("Player2", player2);
         ReadString(recievedMsg);
+        ReadString(recievedMsg2);
     }
 
     public void ReadString(string msg)//reads and splits message
@@ -37,6 +41,7 @@ public class StringReciever : MonoBehaviour
 
             throw;
         }
+        lastMessage.Clear();
         
     }    
 
@@ -50,16 +55,9 @@ public class StringReciever : MonoBehaviour
         functions.Add(id,a);
     }
 
-    private void UpdatePosition()
+    private void UpdatePosition()//updates position of called player
     {
         players[lastMessage[1]].transform.position = new Vector3(int.Parse(lastMessage[3]), int.Parse(lastMessage[4]), int.Parse(lastMessage[5]));
     }
 
-    private void PerformFunction()
-    {
-        if (lastMessage[1] == "Player1")
-        {
-            Invoke(lastMessage[2], 0f);
-        }
-    }
 }

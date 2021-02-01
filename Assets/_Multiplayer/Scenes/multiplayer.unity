@@ -209,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 5528769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -243,11 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4f27e3ba8d48a469c3e3863522d570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recievedMsg: UpdatePosition%Player1%UpdatePosition%5%3%5
-  recievedMsg2: UpdatePosition%Player2%UpdatePosition%-5%5%5
+  recievedMsg: UpdatePosition%Player1%UpdatePosition%5%1%5
+  recievedMsg2: UpdatePosition%Player2%UpdatePosition%-5%1%5
   lastMessage: []
-  player1: {fileID: 1481273225}
-  player2: {fileID: 1601278124}
 --- !u!4 &473863190
 Transform:
   m_ObjectHideFlags: 0
@@ -652,6 +650,7 @@ GameObject:
   - component: {fileID: 1481273228}
   - component: {fileID: 1481273227}
   - component: {fileID: 1481273226}
+  - component: {fileID: 1481273230}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -727,12 +726,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481273225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalPosition: {x: -1, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481273230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481273225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080ca688e1b918a4a967f264ad64671e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Player1
+  indexId: 0
+  speed: 5
 --- !u!1 &1601278124
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +759,7 @@ GameObject:
   - component: {fileID: 1601278127}
   - component: {fileID: 1601278126}
   - component: {fileID: 1601278125}
+  - component: {fileID: 1601278129}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -820,12 +835,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601278124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalPosition: {x: 1, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601278129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601278124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080ca688e1b918a4a967f264ad64671e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Player2
+  indexId: 1
+  speed: 5
 --- !u!1 &1847340766
 GameObject:
   m_ObjectHideFlags: 19

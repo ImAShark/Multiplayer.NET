@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class StringReciever : MonoBehaviour
 {
+    public static StringReciever Instance;
+
     public string recievedMsg;
     public string recievedMsg2;
     public List<string> lastMessage;
 
-    public GameObject player1;
-    public GameObject player2;
-
-    public Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> entities = new Dictionary<string, GameObject>();
     public Dictionary<string, System.Action> functions = new Dictionary<string, System.Action>();
 
-    void Start()
+    void Awake()
     {
-        AddFunction("UpdatePosition", UpdatePosition);
-        AddObject("Player1", player1);
-        AddObject("Player2", player2);
+        if (StringReciever.Instance == null)
+            StringReciever.Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
+
+    void Start()
+    {             
         ReadString(recievedMsg);
         ReadString(recievedMsg2);
     }
@@ -34,7 +38,7 @@ public class StringReciever : MonoBehaviour
 
         try
         {
-            functions[lastMessage[0]]();//calls function from dictionary, based on msg[0]
+            entities[lastMessage[1]].SendMessage(lastMessage[0],new Vector3(int.Parse(lastMessage[3]), int.Parse(lastMessage[4]), int.Parse(lastMessage[5])));//calls function from dictionary, based on msg[0]
         }
         catch (System.Exception)
         {
@@ -47,7 +51,7 @@ public class StringReciever : MonoBehaviour
 
     public void AddObject(string id, GameObject g)//adds gameobject to dictionary with id
     {
-        players.Add(id,g);
+        entities.Add(id,g);
     }
 
     public void AddFunction(string id, System.Action a)//function gameobject to dictionary with id
@@ -57,7 +61,7 @@ public class StringReciever : MonoBehaviour
 
     private void UpdatePosition()//updates position of called player
     {
-        players[lastMessage[1]].transform.position = new Vector3(int.Parse(lastMessage[3]), int.Parse(lastMessage[4]), int.Parse(lastMessage[5]));
+        entities[lastMessage[1]].transform.position = new Vector3(int.Parse(lastMessage[3]), int.Parse(lastMessage[4]), int.Parse(lastMessage[5]));
     }
 
 }

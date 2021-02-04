@@ -23,8 +23,7 @@ public class StringReciever : MonoBehaviour
 
     void Start()
     {             
-        ReadString(recievedMsg);
-        ReadString(recievedMsg2);
+
     }
 
     public void ReadString(string msg)//reads and splits message
@@ -38,15 +37,15 @@ public class StringReciever : MonoBehaviour
 
         try
         {
-            entities[lastMessage[1]].SendMessage(lastMessage[0],new Vector3(int.Parse(lastMessage[3]), int.Parse(lastMessage[4]), int.Parse(lastMessage[5])));//calls function from dictionary, based on msg[0]
+            entities[lastMessage[1]].SendMessage(lastMessage[0],new Vector3(float.Parse(lastMessage[3]), float.Parse(lastMessage[4]), float.Parse(lastMessage[5])));//calls function from dictionary, based on msg[0]
         }
         catch (System.Exception)
         {
 
             throw;
         }
-        lastMessage.Clear();
-        
+
+        lastMessage.Clear();        
     }    
 
     public void AddObject(string id, GameObject g)//adds gameobject to dictionary with id

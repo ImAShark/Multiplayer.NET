@@ -22,8 +22,8 @@ public class StringReciever : MonoBehaviour
     }
 
     void Start()
-    {             
-
+    {
+        MainSockets client = new MainSockets("217.123.65.123", 13000, "217.123.65.123", 14000);
     }
 
     public void ReadString(string msg)//reads and splits message
